@@ -61,7 +61,6 @@ xfont_create(Drw *drw, const char *fontname)
 	PangoFontDescription *desc;
 	PangoFontMetrics *metrics;
 
-
 	if (!fontname) {
 		die("no font specified.");
 	}
