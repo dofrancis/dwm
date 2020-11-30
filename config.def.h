@@ -106,6 +106,9 @@ static Key keys[] = {
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
+	{ MODKEY, 			XK_comma,  spawn, 	   SHCMD("pactl set-sink-volume @DEFAULT_SINK@ -5% && pkill -RTMIN+2 goblocks") },
+        { MODKEY, 			XK_period, spawn,  	   SHCMD("pactl set-sink-volume @DEFAULT_SINK@ +5% && pkill -RTMIN+2 goblocks") },
+        { MODKEY, 			XK_m, 	   spawn, 	   SHCMD("pactl set-sink-mute @DEFAULT_SINK@ toggle && pkill -RTMIN+2 goblocks") },
 };
 
 /* button definitions */
