@@ -71,6 +71,8 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", "#6495ED", "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "urxvt", NULL };
 
+#include <X11/XF86keysym.h>
+
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
@@ -105,9 +107,11 @@ static Key keys[] = {
 	TAGKEYS(                        XK_7,                      6)
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
-	{ MODKEY, 			XK_comma,  spawn, 	   SHCMD("pactl set-sink-volume @DEFAULT_SINK@ -5% && pkill -RTMIN+2 goblocks") },
-        { MODKEY, 			XK_period, spawn,  	   SHCMD("pactl set-sink-volume @DEFAULT_SINK@ +5% && pkill -RTMIN+2 goblocks") },
-        { MODKEY, 			XK_m, 	   spawn, 	   SHCMD("pactl set-sink-mute @DEFAULT_SINK@ toggle && pkill -RTMIN+2 goblocks") },
+        { 0, XF86XK_AudioLowerVolume,   	   spawn, 	   SHCMD("amixer set Master 5%- && pkill -RTMIN+2 goblocks" ) },
+        { 0, XF86XK_AudioMute, 			   spawn,          SHCMD("amixer set Master toggle && pkill -RTMIN+2 goblocks" ) },
+        { 0, XF86XK_AudioRaiseVolume,   	   spawn, 	   SHCMD("amixer set Master 5%+ && pkill -RTMIN+2 goblocks") },
+        { 0, XF86XK_MonBrightnessUp,    	   spawn,     	   SHCMD("light -A 5 && pkill -RTMIN+1 goblocks") },
+        { 0, XF86XK_MonBrightnessDown,  	   spawn,    	   SHCMD("light -U 5 && pkill -RTMIN+1 goblocks") },
 	{ MODKEY|ShiftMask,             XK_q,      spawn,          SHCMD("~/.config/scripts/dmenuExit") },
 	{ MODKEY|ShiftMask,             XK_s,      spawn,          SHCMD("~/.config/scripts/screenshot") },
 };
