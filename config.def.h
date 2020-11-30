@@ -109,6 +109,7 @@ static Key keys[] = {
         { MODKEY, 			XK_period, spawn,  	   SHCMD("pactl set-sink-volume @DEFAULT_SINK@ +5% && pkill -RTMIN+2 goblocks") },
         { MODKEY, 			XK_m, 	   spawn, 	   SHCMD("pactl set-sink-mute @DEFAULT_SINK@ toggle && pkill -RTMIN+2 goblocks") },
 	{ MODKEY|ShiftMask,             XK_q,      spawn,          SHCMD("~/.config/scripts/dmenuExit") },
+	{ MODKEY|ShiftMask,             XK_s,      spawn,          SHCMD("~/.config/scripts/screenshot") },
 };
 
 /* button definitions */
