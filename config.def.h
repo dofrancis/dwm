@@ -117,8 +117,11 @@ static Key keys[] = {
         { 0, XF86XK_AudioPlay,    		   spawn,     	   SHCMD("playerctl play-pause") },
         { 0, XF86XK_AudioNext,    		   spawn,     	   SHCMD("playerctl next") },
         { 0, XF86XK_AudioPrev,    		   spawn,     	   SHCMD("playerctl previous") },
+        { 0, XF86XK_LaunchA,    		   setlayout,      {.v = &layouts[1]} },
+        { 0, XF86XK_LaunchB,    		   setlayout,      {.v = &layouts[0]} },
 	{ MODKEY|ShiftMask,             XK_q,      spawn,          SHCMD("~/.config/scripts/dmenuExit") },
 	{ MODKEY|ShiftMask,             XK_s,      spawn,          SHCMD("~/.config/scripts/screenshot") },
+	{ MODKEY,	                XK_e,      spawn,          SHCMD("urxvt -e nnn -e") },
 };
 
 /* button definitions */
