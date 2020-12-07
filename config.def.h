@@ -122,6 +122,8 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_q,      spawn,          SHCMD("~/.config/scripts/dmenuExit") },
 	{ MODKEY|ShiftMask,             XK_s,      spawn,          SHCMD("~/.config/scripts/screenshot") },
 	{ MODKEY,	                XK_e,      spawn,          SHCMD("urxvt -e nnn -e") },
+	{ MODKEY,	                XK_u,      spawn,          SHCMD("picom -b") },
+	{ MODKEY|ShiftMask,             XK_u,      spawn,          SHCMD("killall picom") },
 };
 
 /* button definitions */
