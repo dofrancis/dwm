@@ -1,7 +1,7 @@
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
-static const unsigned int borderpx  = 0;        /* border pixel of windows */
+static const unsigned int borderpx  = 5;        /* border pixel of windows */
 static const unsigned int gappx     = 18;        /* gaps between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
@@ -121,9 +121,10 @@ static Key keys[] = {
         { 0, XF86XK_LaunchB,    		   setlayout,      {.v = &layouts[0]} },
 	{ MODKEY|ShiftMask,             XK_q,      spawn,          SHCMD("~/.config/scripts/dmenuExit") },
 	{ MODKEY|ShiftMask,             XK_s,      spawn,          SHCMD("~/.config/scripts/screenshot") },
-	{ MODKEY,	                XK_e,      spawn,          SHCMD("urxvt -e nnn -e") },
+	{ MODKEY,	                XK_e,      spawn,          SHCMD("urxvt -e nnn -e -C") },
 	{ MODKEY,	                XK_u,      spawn,          SHCMD("picom -b") },
 	{ MODKEY|ShiftMask,             XK_u,      spawn,          SHCMD("killall picom") },
+	{ MODKEY|ShiftMask,             XK_t,      spawn,          SHCMD("urxvt -e htop") },
 };
 
 /* button definitions */
