@@ -111,7 +111,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_q,      spawn,          SHCMD("~/.config/scripts/dmenuExit") },
 	{ MODKEY|ShiftMask,             XK_s,      spawn,          SHCMD("~/.config/scripts/screenshot") },
 	{ MODKEY,	                XK_s,      spawn,          SHCMD("~/.config/scripts/screenshot2") },
-	{ MODKEY,	                XK_e,      spawn,          SHCMD("export XDG_CURRENT_DESKTOP=KDE && dolphin") },
+	{ MODKEY,	                XK_e,      spawn,          SHCMD("urxvt -e nnn -e -C") },
 };
 
 /* button definitions */
