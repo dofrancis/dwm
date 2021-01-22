@@ -68,7 +68,7 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", "#6495ED", "-sf", col_gray4, NULL };
-static const char *termcmd[]  = { "urxvt", NULL };
+static const char *termcmd[]  = { "st", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -110,7 +110,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_q,      spawn,          SHCMD("~/.config/scripts/dmenuExit") },
 	{ MODKEY|ShiftMask,             XK_s,      spawn,          SHCMD("~/.config/scripts/screenshot") },
 	{ MODKEY,	                XK_s,      spawn,          SHCMD("~/.config/scripts/screenshot2") },
-	{ MODKEY,	                XK_e,      spawn,          SHCMD("urxvt -e nnn -e -C") },
+	{ MODKEY,	                XK_e,      spawn,          SHCMD("st -e nnn -e -C") },
 };
 
 /* button definitions */
