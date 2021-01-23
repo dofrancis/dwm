@@ -13,8 +13,8 @@ static const unsigned int systraypinning = 0;   /* 0: sloppy systray follows sel
 static const unsigned int systrayspacing = 2;   /* systray spacing */
 static const int systraypinningfailfirst = 1;   /* 1: if pinning fails, display systray on the first monitor, False: display systray on the last monitor*/
 static const int showsystray             = 1;   /* 0 means no systray */
-static const char font[]            = "Hack 11";
-static const char dmenufont[]       = "Noto Sans:size=9";
+static const char font[]            = "JetBrains Mono 11";
+static const char dmenufont[]       = "JetBrains Mono-11";
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#bbbbbb";
