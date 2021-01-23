@@ -73,6 +73,8 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray4, "-nf", col_gray1, "-sb", col_cyan, "-sf", col_gray4, "-c", "-bw", "4", "-l", "10", "-hp", "google-chrome-stable,discord,nvidia-settings,spotify,telegram-desktop,intellij-idea-ultimate-edition", NULL };
 static const char *termcmd[]  = { "st", NULL };
 
+#include <X11/XF86keysym.h>
+
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
@@ -107,9 +109,12 @@ static Key keys[] = {
 	TAGKEYS(                        XK_7,                      6)
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
-	{ MODKEY, 			XK_comma,  spawn, 	   SHCMD("pactl set-sink-volume @DEFAULT_SINK@ -5% && pkill -RTMIN+2 goblocks") },
-        { MODKEY, 			XK_period, spawn,  	   SHCMD("pactl set-sink-volume @DEFAULT_SINK@ +5% && pkill -RTMIN+2 goblocks") },
-        { MODKEY, 			XK_m, 	   spawn, 	   SHCMD("pactl set-sink-mute @DEFAULT_SINK@ toggle && pkill -RTMIN+2 goblocks") },
+	{ MODKEY, 			XK_comma,  spawn, 	   SHCMD("amixer set Master 5%- && pkill -RTMIN+2 goblocks") },
+        { MODKEY, 			XK_period, spawn,  	   SHCMD("amixer set Master 5%+ && pkill -RTMIN+2 goblocks") },
+        { MODKEY, 			XK_m, 	   spawn, 	   SHCMD("amixer set Master toggle && pkill -RTMIN+2 goblocks") },
+        { 0, XF86XK_AudioLowerVolume,   	   spawn, 	   SHCMD("amixer set Master 5%- && pkill -RTMIN+2 goblocks" ) },
+        { 0, XF86XK_AudioRaiseVolume,   	   spawn, 	   SHCMD("amixer set Master 5%+ && pkill -RTMIN+2 goblocks") }, 
+        { 0, XF86XK_AudioMute, 			   spawn,          SHCMD("amixer set Master toggle && pkill -RTMIN+2 goblocks" ) },
 	{ MODKEY|ShiftMask,             XK_q,      spawn,          SHCMD("~/.config/scripts/dmenuExit") },
 	{ MODKEY|ShiftMask,             XK_s,      spawn,          SHCMD("~/.config/scripts/screenshot") },
 	{ MODKEY,	                XK_s,      spawn,          SHCMD("~/.config/scripts/screenshot2") },
@@ -131,11 +136,11 @@ static Button buttons[] = {
 	{ ClkTagBar,            0,              Button1,        view,           {0} },
 	{ ClkTagBar,            0,              Button3,        toggleview,     {0} },
 	{ ClkTagBar,            MODKEY,         Button1,        tag,            {0} },
-	{ ClkTagBar,            MODKEY,         Button3,        toggletag,      {0} },
-	{ ClkStatusText,        0,              Button4,        spawn,          SHCMD("pactl set-sink-volume @DEFAULT_SINK@ +5% && pkill -RTMIN+2 goblocks") },
-	{ ClkStatusText,        0,              Button5,        spawn,          SHCMD("pactl set-sink-volume @DEFAULT_SINK@ -5% && pkill -RTMIN+2 goblocks") },
+	{ ClkTagBar,            MODKEY,         Button3,        toggletag,      {0} }, 
+	{ ClkStatusText,        0,              Button5,        spawn,          SHCMD("amixer set Master 5%- && pkill -RTMIN+2 goblocks") },
+	{ ClkStatusText,        0,              Button4,        spawn,          SHCMD("amixer set Master 5%+ && pkill -RTMIN+2 goblocks") },
 	{ ClkStatusText,        0,              Button1,        spawn,          SHCMD("if (pgrep spotify); then : ; else spotify; fi") },
-	{ ClkStatusText,        0,              Button3,        spawn,          SHCMD("pactl set-sink-mute @DEFAULT_SINK@ toggle && pkill -RTMIN+2 goblocks") },
+	{ ClkStatusText,        0,              Button3,        spawn,          SHCMD("amixer set Master toggle && pkill -RTMIN+2 goblocks") },
 	{ ClkTagBar,		0,		Button4,	shiftview,	{.i = -1} },
 	{ ClkTagBar,		0,		Button5,	shiftview,	{.i = 1} },
 	{ ClkWinTitle,		0,		Button4,	shiftview,	{.i = -1} },
