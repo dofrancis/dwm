@@ -116,6 +116,8 @@ static Key keys[] = {
 	{ MODKEY,	                XK_e,      spawn,          SHCMD("st -e nnn -e -C") },
 };
 
+#include "shiftview.c"
+
 /* button definitions */
 /* click can be ClkTagBar, ClkLtSymbol, ClkStatusText, ClkWinTitle, ClkClientWin, or ClkRootWin */
 static Button buttons[] = {
@@ -130,5 +132,9 @@ static Button buttons[] = {
 	{ ClkTagBar,            0,              Button3,        toggleview,     {0} },
 	{ ClkTagBar,            MODKEY,         Button1,        tag,            {0} },
 	{ ClkTagBar,            MODKEY,         Button3,        toggletag,      {0} },
+	{ ClkTagBar,		0,		Button4,	shiftview,	{.i = -1} },
+	{ ClkTagBar,		0,		Button5,	shiftview,	{.i = 1} },
+	{ ClkWinTitle,		0,		Button4,	shiftview,	{.i = -1} },
+	{ ClkWinTitle,		0,		Button5,	shiftview,	{.i = 1} },
 };
 
