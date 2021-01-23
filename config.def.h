@@ -70,7 +70,7 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray4, "-nf", col_gray1, "-sb", col_cyan, "-sf", col_gray4, NULL };
+static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray4, "-nf", col_gray1, "-sb", col_cyan, "-sf", col_gray4, "-c", "-bw", "4", "-l", "10", "-hp", "google-chrome-stable,discord,nvidia-settings,spotify,telegram-desktop,intellij-idea-ultimate-edition", NULL };
 static const char *termcmd[]  = { "st", NULL };
 
 static Key keys[] = {
