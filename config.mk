@@ -16,9 +16,12 @@ FREETYPEINC = /usr/include/freetype2
 # OpenBSD (uncomment)
 #FREETYPEINC = ${X11INC}/freetype2
 
+# This is needed for the swallow patch
+XCBLIBS = -lX11-xcb -lxcb -lxcb-res
+
 # includes and libs
 INCS = -I${X11INC} -I${FREETYPEINC} `pkg-config --cflags xft pango pangoxft`
-LIBS = -L${X11LIB} -lX11 ${FREETYPELIBS} `pkg-config --libs xft pango pangoxft` -lXrender
+LIBS = -L${X11LIB} -lX11 ${FREETYPELIBS} `pkg-config --libs xft pango pangoxft` -lXrender ${XCBLIBS} ${KVMLIB}
 
 # flags
 CPPFLAGS = -D_DEFAULT_SOURCE -D_BSD_SOURCE -D_POSIX_C_SOURCE=200809L -DVERSION=\"${VERSION}\" -flto -march=native
