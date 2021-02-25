@@ -13,7 +13,7 @@ static const unsigned int systraypinning = 0;   /* 0: sloppy systray follows sel
 static const unsigned int systrayspacing = 3;   /* systray spacing */
 static const int systraypinningfailfirst = 1;   /* 1: if pinning fails, display systray on the first monitor, False: display systray on the last monitor*/
 static const int showsystray             = 1;   /* 0 means no systray */
-static const char font[]            = "JetBrains Mono 11";
+static const char font[]            = "JetBrains Mono NL 11";
 static const char dmenufont[]       = "JetBrains Mono-11";
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#555555";
@@ -24,7 +24,7 @@ static const unsigned int baralpha = 150;
 static const unsigned int borderalpha = OPAQUE;
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
-	[SchemeNorm] = { col_gray2, col_gray3, col_gray2  },
+	[SchemeNorm] = { "#444444", col_gray3, col_gray2  },
 	[SchemeSel]  = { col_gray4, col_cyan,  col_cyan  },
 };
 static const unsigned int alphas[][3]      = {
@@ -44,17 +44,18 @@ static const Rule rules[] = {
 	{ "Chromium", NULL,   	  "Google Docs",  0,    	    1,           -1 },
 	{ "discord",  NULL,   	  NULL,		  1 << 2,    	    0,           -1 },
 	{ "TelegramDesktop",NULL, NULL,		  1 << 2,    	    0,           -1 },
+	{ "jetbrains-idea",NULL,  "win0",	  0,		    1,		 -1 }
 };
 
 /* layout(s) */
 static const float mfact     = 0.5; /* factor of master area size [0.05..0.95] */
 static const int nmaster     = 1;    /* number of clients in master area */
-static const int resizehints = 0;    /* 1 means respect size hints in tiled resizals */
+static const int resizehints = 1;    /* 1 means respect size hints in tiled resizals */
 
 static const Layout layouts[] = {
 	/* symbol     arrange function */
-	{ "[]",      tile },    /* first entry is default */
-	{ "<>",      NULL },    /* no layout function means floating behavior */
+	{ "[]=",      tile },    /* first entry is default */
+	{ "><>",      NULL },    /* no layout function means floating behavior */
 };
 
 /* key definitions */
@@ -118,7 +119,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_q,      spawn,          SHCMD("~/.config/scripts/dmenuExit") },
 	{ MODKEY|ShiftMask,             XK_s,      spawn,          SHCMD("~/.config/scripts/screenshot") },
 	{ MODKEY,	                XK_s,      spawn,          SHCMD("~/.config/scripts/screenshot2") },
-	{ MODKEY,	                XK_e,      spawn,          SHCMD("st -e nnn -e -C") },
+	{ MODKEY,	                XK_e,      spawn,          SHCMD("st -e lf") },
 };
 
 #include "shiftview.c"
