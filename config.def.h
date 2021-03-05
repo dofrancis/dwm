@@ -62,6 +62,7 @@ static const Layout layouts[] = {
 
 /* key definitions */
 #define MODKEY Mod4Mask
+#define ALTKEY Mod1Mask
 #define TAGKEYS(KEY,TAG) \
 	{ MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
 	{ MODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
@@ -115,6 +116,9 @@ static Key keys[] = {
 	{ MODKEY, 			XK_comma,  spawn, 	   SHCMD("amixer set Master 5%- && pkill -RTMIN+2 goblocks") },
         { MODKEY, 			XK_period, spawn,  	   SHCMD("amixer set Master 5%+ && pkill -RTMIN+2 goblocks") },
         { MODKEY, 			XK_m, 	   spawn, 	   SHCMD("amixer set Master toggle && pkill -RTMIN+2 goblocks") },
+	{ ALTKEY, 			XK_comma,  spawn, 	   SHCMD("dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous") },
+        { ALTKEY, 			XK_period, spawn,  	   SHCMD("dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next") },
+        { ALTKEY, 			XK_m, 	   spawn, 	   SHCMD("dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause") },
         { 0, XF86XK_AudioLowerVolume,   	   spawn, 	   SHCMD("amixer set Master 5%- && pkill -RTMIN+2 goblocks" ) },
         { 0, XF86XK_AudioRaiseVolume,   	   spawn, 	   SHCMD("amixer set Master 5%+ && pkill -RTMIN+2 goblocks") }, 
         { 0, XF86XK_AudioMute, 			   spawn,          SHCMD("amixer set Master toggle && pkill -RTMIN+2 goblocks" ) },
